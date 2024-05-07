@@ -3,12 +3,11 @@ package com.example.bankserviceserver.controller;
 import com.example.bankserviceserver.model.User;
 import com.example.bankserviceserver.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +19,12 @@ public class UserController {
         return userService.listUsers();
     }
 
+    @GetMapping("/user/{id}")
+    public Optional<User> findById(@PathVariable Long id) {
+        return userService.findById(id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/addUser")
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);

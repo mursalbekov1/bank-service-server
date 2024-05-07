@@ -21,6 +21,9 @@ public class User {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "account_id", nullable = false)
-    private Long account_id;
+    @Column(name = "number", nullable = false)
+    private String number;
+
+    @Column(name = "cash", nullable = false)
+    private Long cash;
 }
